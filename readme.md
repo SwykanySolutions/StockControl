@@ -14,7 +14,7 @@ A clonagem via ssh, é necessario que o usuário crie uma chave pública ssh em 
 git clone https://github.com/SwykanySolutions/StockControl.git
 
 #clonagem via ssh
-git clone git@github.com:vlucas/phpdotenv.git
+git clone git@github.com:SwykanySolutions/StockControl.git
 
 cd StockControl
 ```
