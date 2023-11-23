@@ -32,8 +32,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($result as $row): ?>
-
+                        <?php foreach($result as $row){ ?>
+                        <div class="modal fade" id="modalExcluirVendaId<?=$row["id_venda"]?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Dados</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Deseja mesmo excluir a venda ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <form action="/StockControl/server/Auth/excluir_venda/" method="post">
+                                        <input class="d-none" type="number" value="<?=$row["id_venda"]?>" name="id_venda" id="id_venda">
+                                        <button type="submit" class="btn btn-danger">Excluir</button>
+                                    </form>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                         <tr>
                             <th scope="col"><?=$row["id_venda"]?></th>
                             <td scope="col"><?=$row["id_produto"]?></td>
@@ -62,43 +81,44 @@
                                 </div>
                                 <div class="modal-body">
                                <?php 
-                                $stmt1 = $conexao->query("SELECT * FROM produto ORDER BY id_produto ASC");
-                                $stmt1->execute();
-                                $result1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
-                                $stmt2 = $conexao->query("SELECT * FROM cliente ORDER BY id_cliente ASC");
-                                $stmt2->execute();
-                                $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-                 ?>
-                    <form action="/StockControl/server/Auth/atualizar_vendas/" method="post">
-                        <div class="row" >
-                            <div class="col-6 mb-3" >
-                                <label for="id_produto" class="form-label">Produto</label>
-                                <select class="form-select form-select-md" name="id_produto" id="id_produto">
-                                    <?php foreach($result1 as $row1): ?>
-                                    <option <?=($row1["id_produto"] == $row["id_produto"]) ? "selected": ""?> value="<?=$row1["id_produto"]?>"><?=$row1["nome"]?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="col-6 mb-3" >
-                                <label for="id_cliente" class="form-label">Cliente</label>
-                                <select class="form-select form-select-md" name="id_cliente" id="id_cliente">
-                                    <?php foreach($result2 as $row2): ?>
-                                    <option <?=($row2["id_cliente"] == $row["id_cliente"]) ? "selected": ""?> value="<?=$row2["id_cliente"]?>"><?=$row2["nome"]?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="col-6 mb-3" >
-                                <label for="quantidade" class="form-label">Quantidade</label>
-                                <input value="<?=$row["quantidade"]?>" type="number" class="form-control" name="quantidade" id="quantidade" aria-describedby="quantidadehelpId" placeholder="">
-                                <small id="quantidadehelpId" class="form-text text-muted">Informe a quantidade de produtos da venda.</small>
-                            </div>
-                            <div class="col-6 mb-3" >
-                                <label for="data-da-compra" class="form-label">Data da compra</label>
-                                <input type="date" value="<?=$row["data_da_venda"]?>"
-                                class="form-control" name="data-da-compra" id="data-da-compra" aria-describedby="datehelpId" placeholder="">
-                                <small id="datehelpId" class="form-text text-muted">Informe a data da compra</small>
-                            </div>
-                                </div>
+                                    $stmt1 = $conexao->query("SELECT * FROM produto ORDER BY id_produto ASC");
+                                    $stmt1->execute();
+                                    $result1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+                                    $stmt2 = $conexao->query("SELECT * FROM cliente ORDER BY id_cliente ASC");
+                                    $stmt2->execute();
+                                    $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+                                ?>
+                                    <form action="/StockControl/server/Auth/atualizar_vendas/" method="post">
+                                        <input class="d-none" type="number" value="<?=$row["id_venda"]?>" name="id_venda" id="">
+                                        <div class="row" >
+                                            <div class="col-6 mb-3" >
+                                                <label for="id_produto" class="form-label">Produto</label>
+                                                <select class="form-select form-select-md" name="id_produto" id="id_produto">
+                                                    <?php foreach($result1 as $row1){ ?>
+                                                    <option <?=($row1["id_produto"] == $row["id_produto"]) ? "selected": ""?> value="<?=$row1["id_produto"]?>"><?=$row1["nome"]?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                            <div class="col-6 mb-3" >
+                                                <label for="id_cliente" class="form-label">Cliente</label>
+                                                <select class="form-select form-select-md" name="id_cliente" id="id_cliente">
+                                                    <?php foreach($result2 as $row2){ ?>
+                                                    <option <?=($row2["id_cliente"] == $row["id_cliente"]) ? "selected": ""?> value="<?=$row2["id_cliente"]?>"><?=$row2["nome"]?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                            <div class="col-6 mb-3" >
+                                                <label for="quantidade" class="form-label">Quantidade</label>
+                                                <input value="<?=$row["quantidade"]?>" type="number" class="form-control" name="quantidade" id="quantidade" aria-describedby="quantidadehelpId" placeholder="">
+                                                <small id="quantidadehelpId" class="form-text text-muted">Informe a quantidade de produtos da venda.</small>
+                                            </div>
+                                            <div class="col-6 mb-3" >
+                                                <label for="data-da-compra" class="form-label">Data da compra</label>
+                                                <input type="date" value="<?=$row["data_da_venda"]?>"
+                                                class="form-control" name="data-da-compra" id="data-da-compra" aria-describedby="datehelpId" placeholder="">
+                                                <small id="datehelpId" class="form-text text-muted">Informe a data da compra</small>
+                                            </div>
+                                        </div>
                                 <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                                         <button type="submit" class="btn btn-primary">Alterar</button>
@@ -107,27 +127,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="modalExcluirVendaId<?=$row["id_venda"]?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Dados</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <h2>Deseja mesmo excluir a venda ?</h2>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <form action="/StockControl/server/Auth/excluir_venda/" method="post">
-                                        <input class="d-none" type="number" value="<?=$row["id_venda"]?>" name="id_venda" id="id_venda">
-                                        <button type="submit" class="btn btn-danger">Excluir</button>
-                                    </form>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                        <?php endforeach; ?>
+
+                        
+
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
