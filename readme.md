@@ -4,10 +4,18 @@
 Uma aplicação web em php para controle de estoque e vendas.
 ## Instalação
 
-Para instalar o projeto primeiro temos que clona-lo do github por ssh ou url
+Para instalar o projeto primeiro temos que clona-lo do github por ssh ou url.
+
+### Observação
+A clonagem via ssh, é necessario que o usuário crie uma chave pública ssh em sua conta, para realizar a clonagem do repositório.
 
 ```bash
+## clonagem via url
 git clone https://github.com/SwykanySolutions/StockControl.git
+
+#clonagem via ssh
+git clone git@github.com:vlucas/phpdotenv.git
+
 cd StockControl
 ```
 
