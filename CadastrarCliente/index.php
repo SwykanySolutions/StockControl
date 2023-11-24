@@ -1,3 +1,4 @@
+<?php require_once($_SERVER["DOCUMENT_ROOT"]."/StockControl/components/VerifyLogin/index.php"); ?>
 <?php $PAGE = "cadastrarcliente"; ?>
 <html lang="pt-br" data-bs-theme="auto">
 <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Head/index.php"); ?>
@@ -8,7 +9,7 @@
         <div class="container mt-5" >
             <h2 class="text-center mb-5" >Boas vindas ao cadastro de Clientes</h2>
             <h3 class="text-center mb-5" >Para cadastrar um cliente informe os dados abaixo:</h3>
-            <form action="/StockControl/server/Auth/cadastrar_clientes/" method="post">
+            <form action="/StockControl/server/Requests/cadastrar_clientes/" method="post">
                 <div class="row" >
                     <div class="mb-3 col-6">
                       <label for="nome" class="form-label">Nome do cliente</label>

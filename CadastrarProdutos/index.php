@@ -1,3 +1,4 @@
+<?php require_once($_SERVER["DOCUMENT_ROOT"]."/StockControl/components/VerifyLogin/index.php"); ?>
 <?php $PAGE = "cadastrarproduto"; ?>
 <html lang="pt-br" data-bs-theme="auto">
 <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Head/index.php"); ?>
@@ -8,7 +9,7 @@
         <div class="container mt-5" >
             <h2 class="text-center mb-5" >Boas vindas ao cadastro de Produtos</h2>
             <h3 class="text-center mb-5" >Para cadastrar um produto informe os dados abaixo:</h3>
-            <form action="/StockControl/server/Auth/cadastrar_produtos/" method="post">
+            <form action="/StockControl/server/Requests/cadastrar_produtos/" method="post">
                 <div class="row" >
                     <div class="mb-3 col-6">
                       <label for="codigo-de-barras" class="form-label">Código de barras</label>
@@ -18,7 +19,7 @@
                     <div class="mb-3 col-6">
                       <label for="nome" class="form-label">Nome Produto</label>
                       <input type="text" class="form-control" name="nome" id="nome" aria-describedby="nomeHelpId" placeholder="ex Sintonia Max">
-                      <small id="nomeHelpId" class="form-text text-muted">Digite o código de barras</small>
+                      <small id="nomeHelpId" class="form-text text-muted">Digite o nome do produto</small>
                     </div>
                     <div class="mb-3 col-6">
                       <label for="categoria" class="form-label">Categoria</label>

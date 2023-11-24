@@ -1,3 +1,4 @@
+<?php require_once($_SERVER["DOCUMENT_ROOT"]."/StockControl/components/VerifyLogin/index.php"); ?>
 <?php $PAGE = "cadastrarvenda"; ?>
 <!DOCTYPE html>
 <html lang="pt-br" data-bs-theme="auto">
@@ -19,7 +20,7 @@
                 if($result != null ){
                     if($result1 != null ){
                  ?>
-                    <form action="/StockControl/server/Auth/cadastrar_vendas/" method="post">
+                    <form action="/StockControl/server/Requests/cadastrar_vendas/" method="post">
                         <div class="row" >
                             <div class="col-6 mb-3" >
                                 <label for="id_produto" class="form-label">Produto</label>

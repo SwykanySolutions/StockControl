@@ -38,6 +38,11 @@ Lembrando que a ultilização do arquivo .env só é recomendada em ambiente de 
 - **Crud** venda
 - Vinculo de clientes a uma venda
 - Atualização de quantidade de produtos automatica **(trigger)** feita no banco de dados
+
+## Informações importantes
+A aplicação foi desenvolvida e configurada para ultilização da mesma dentro da pasta StockControl na raiz (htdocs) do servidor.
+
+
 ## Referências
 
 ### Frameworks

@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    header("Location: /StockControl/CadastrarVenda/");
+    header("Location: /StockControl/");
     exit();
 }
 try {
@@ -10,15 +10,15 @@ try {
     $stmt = $conexao->prepare($SQL);
     $stmt->bindParam(":id_venda", $id_venda, PDO::PARAM_INT);
     if(!$stmt->execute()){
-        header("Location:/StockControl/");
+        header("Location: /StockControl/");
         exit();
     }
     header("Location:/StockControl/");
     exit();
 
 } catch (\Throwable $th) {
-    echo "erro ao cadastrar a venda". $th->getMessage();
-    header("Location:/StockControl/");
+    echo "erro ao excluir a venda". $th->getMessage();
+    header("Location: /StockControl/");
     exit();
     //throw $th;
 }

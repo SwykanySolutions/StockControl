@@ -25,7 +25,7 @@ try {
     exit();
 
 } catch (\Throwable $th) {
-    echo "erro ao cadastrar a venda". $th->getMessage();
+    echo "erro ao atualizar a venda". $th->getMessage();
     header("Location:/StockControl/");
     exit();
     //throw $th;
