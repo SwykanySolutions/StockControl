@@ -40,8 +40,8 @@ Lembrando que a ultilização do arquivo .env só é recomendada em ambiente de 
 - Atualização de quantidade de produtos automatica **(trigger)** feita no banco de dados
 
 ## Informações importantes
-A aplicação foi desenvolvida e configurada para ultilização da mesma dentro da pasta StockControl na raiz (htdocs) do servidor.
-
+- A aplicação foi desenvolvida e configurada para ultilização da mesma dentro da pasta StockControl na raiz (htdocs) do servidor.
+- A pasta SQL contem um sql que é capaz de gerar o banco de dados base ultilizado para a criação e funcionamento do projeot.
 
 ## Referências
 
