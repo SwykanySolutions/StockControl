@@ -5,7 +5,7 @@
     <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Color/index.php"); ?>
     <div class="vh-100 w-100 d-flex justify-content-center align-items-center">
         <div class="container">
-            <h2 class="text-center mb-4" >Faça o Registro abaixo:</h2>
+            <h2 class="text-center" >Faça o Registro abaixo:</h2>
             <form action="/StockControl/server/Auth/registro/index.php" method="post">
                 <div class="row">
                     <div class="mb-3 col-6">

@@ -121,7 +121,7 @@
             </div>
         </div>
         <?php } else { ?>
-            <h4 class="text-center mb-5 text-danger" >Não há vendas feitas.</h4>
+            <h4 class="text-center mb-5 text-danger" >Não há clientes cadastrados.</h4>
         <?php } ?>
     </div>
     <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Body/index.php"); ?>

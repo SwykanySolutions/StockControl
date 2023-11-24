@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    header("Location:/StockControl/CadastroProdutos/");
+    header("Location:/StockControl/CadastroProduto/");
     exit();
 }
 try {
@@ -22,7 +22,7 @@ try {
     $stmt->bindParam(":marca", $marca, PDO::PARAM_STR);
     $stmt->bindParam(":quantidade", $quantidade, PDO::PARAM_INT);
     if(!$stmt->execute()){
-        header("Location:/StockControl/CadastroProdutos/");
+        header("Location:/StockControl/CadastroProduto/");
         exit();
     }
     header("Location:/StockControl/Estoque/");
@@ -30,7 +30,7 @@ try {
 
 } catch (\Throwable $th) {
     echo "erro ao cadastrar o produto". $th->getMessage();
-    header("Location:/StockControl/CadastroProdutos/");
+    header("Location:/StockControl/CadastroProduto/");
     exit();
     //throw $th;
 }

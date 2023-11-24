@@ -16,7 +16,7 @@
           <a class="nav-link <?=($PAGE == "estoque") ? "active" : ""?>" href="/StockControl/Estoque">Estoque</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?=($PAGE == "cadastrarproduto") ? "active" : ""?>" href="/StockControl/CadastrarProdutos">Cadastrar Produtos</a>
+          <a class="nav-link <?=($PAGE == "cadastrarproduto") ? "active" : ""?>" href="/StockControl/CadastrarProduto">Cadastrar Produtos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link <?=($PAGE == "cliente") ? "active" : ""?>" href="/StockControl/Cliente">Clientes</a>
@@ -27,5 +27,10 @@
         
       </ul>
     </div>
+    <div>
+        <ul class="navbar-nav">
+          <li class="nav-item" ><a class="nav-link" href="/StockControl/server/Auth/logout/">Logout</a></li>
+        </ul>
+      </div>
   </div>
 </nav>

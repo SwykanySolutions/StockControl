@@ -19,7 +19,7 @@ try {
         header("Location:/StockControl/CadastrarCliente/");
         exit();
     }
-    header("Location:/StockControl/Estoque/");
+    header("Location:/StockControl/CadastrarCliente/");
     exit();
 
 } catch (\Throwable $th) {
