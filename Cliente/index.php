@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <form action="/StockControl/server/Requests/atualizar_cliente/" method="post">
-                                        <input class="d-none" type="number" value="<?=$row["id_cliente"]?>" name="" id="">
+                                        <input class="d-none" type="number" value="<?=$row["id_cliente"]?>" name="id_cliente" id="">
                                         <div class="row" >
                                             <div class="mb-3 col-6">
                                             <label for="nome" class="form-label">Nome do cliente</label>

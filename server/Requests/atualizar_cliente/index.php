@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    header("Location: /StockControl/CadastrarVenda/");
+    header("Location: /StockControl/Cliente/");
     exit();
 }
 try {
@@ -12,21 +12,21 @@ try {
     $cpf = filter_input(INPUT_POST,"cpf", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $SQL = "UPDATE cliente SET nome = :nome, sobrenome = :sobrenome, data_de_nascimento = :data_de_nascimento, cpf = :cpf WHERE id_cliente = :id_cliente";
     $stmt = $conexao->prepare($SQL);
-    $stmt->bindParam(":id_cliente", $id_cliente, PDO::PARAM_INT);
-    $stmt->bindParam(":nome", $nome, PDO::PARAM_INT);
-    $stmt->bindParam(":sobrenome", $sobrenome, PDO::PARAM_INT);
+    $stmt->bindParam(":id_cliente", $id_cliente, PDO::PARAM_STR);
+    $stmt->bindParam(":nome", $nome, PDO::PARAM_STR);
+    $stmt->bindParam(":sobrenome", $sobrenome, PDO::PARAM_STR);
     $stmt->bindParam(":data_de_nascimento", $data_de_nascimento, PDO::PARAM_STR);
     $stmt->bindParam(":cpf", $cpf, PDO::PARAM_STR);
     if(!$stmt->execute()){
-        header("Location:/StockControl/");
+        header("Location: /StockControl/Cliente/");
         exit();
     }
-    header("Location:/StockControl/");
+    header("Location: /StockControl/Cliente/");
     exit();
 
 } catch (\Throwable $th) {
     echo "erro ao atualizar o cliente". $th->getMessage();
-    header("Location:/StockControl/");
+    header("Location: /StockControl/Cliente/");
     exit();
     //throw $th;
 }
