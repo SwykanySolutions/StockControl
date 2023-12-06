@@ -7,15 +7,24 @@
     <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Navbar/index.php"); ?>
     <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Color/index.php"); ?>
     <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/server/Conexao/conectar.php"); ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Alert_Atualizar_Excluir/index.php"); ?>
     <div class="container mt-5" >
         <h2 class="text-center mb-5" >Boas vindas ao StockControler.</h2>
         <h3 class="text-center mb-5" >Abaixo temos algumas informações sobre o sistema</h3>
         <?php
+
             $SQL = "SELECT * FROM venda ORDER BY id_venda ASC";
+            /**
+             * @var \PDO $conexao
+             */
             $stmt = $conexao->prepare($SQL);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if($result != null) {
+                $SQL_SELECT_CLIENTE = "SELECT * FROM cliente WHERE id_cliente = :id_cliente";
+                $SQL_SELECT_PRODUTO = "SELECT * FROM produto WHERE id_produto = :id_produto";
+                $stmt_cliente = $conexao->prepare($SQL_SELECT_CLIENTE);
+                $stmt_produto = $conexao->prepare($SQL_SELECT_PRODUTO);
         ?>
         <h4 class="text-center mb-3" > Tabela de Vendas</h4>
         <div class="w-100 d-flex justify-content-center">
@@ -23,9 +32,8 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Id_venda</th>
-                            <th scope="col">Id_produto</th>
-                            <th scope="col">Id_cliente</th>
+                            <th scope="col">Produto</th>
+                            <th scope="col">Nome Completo do Cliente</th>
                             <th scope="col">Quantidade</th>
                             <th scope="col">Data da Venda</th>
                             <th scope="col">Alterar</th>
@@ -33,14 +41,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($result as $row){ ?>
-                        
+                        <?php foreach($result as $row){ 
+                            $stmt_produto->bindParam(":id_produto",$row['id_produto'], PDO::PARAM_INT);
+                            $stmt_cliente->bindParam(":id_cliente", $row["id_cliente"], PDO::PARAM_INT);
+                            $stmt_cliente->execute();
+                            $stmt_produto->execute();
+                            $result_cliente = $stmt_cliente->fetch(PDO::FETCH_ASSOC);
+                            $result_produto = $stmt_produto->fetch(PDO::FETCH_ASSOC);
+                        ?>
                         <tr>
-                            <th scope="col"><?=$row["id_venda"]?></th>
-                            <td scope="col"><?=$row["id_produto"]?></td>
-                            <td scope="col"><?=$row["id_cliente"]?></td>
+                            <td scope="col"><?=$result_produto["nome"]?></td>
+                            <td scope="col"><?=$result_cliente["nome"]." ".$result_cliente["sobrenome"]?></td>
                             <td scope="col"><?=$row["quantidade"]?></td>
-                            <td scope="col"><?=$row["data_da_venda"]?></td>
+                            <td scope="col"><?=(new DateTime($row["data_da_venda"]))->format("d/m/Y")?></td>
                             <td scope="col">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAlterarVendaId<?=$row["id_venda"]?>">
                                     Alterar
@@ -142,6 +155,8 @@
             <h4 class="text-center mb-5 text-danger" >Não há vendas feitas.</h4>
         <?php } ?>
     </div>
+    
+    
     <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Body/index.php"); ?>
 </body>
 </html>

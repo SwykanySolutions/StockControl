@@ -5,6 +5,7 @@
 <body>
     <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Navbar/index.php"); ?>
     <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Color/index.php"); ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Alert_Cadastrar/index.php"); ?>
     <div class="w-100 d-flex justify-content-center">
         <div class="container mt-5" >
             <h2 class="text-center mb-5" >Boas vindas ao cadastro de Produtos</h2>

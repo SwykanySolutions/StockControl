@@ -11,12 +11,12 @@
                     <div class="mb-3 col-12 ">
                         <label for="login" class="form-label">Login</label>
                         <input type="text" class="form-control" name="login" id="login" aria-describedby="loginHelpId" placeholder="ex Asraklen ou teste@teste.com" required>
-                        <small id="loginHelpId" class="form-text text-muted">Insira sua senha</small>
+                        <small id="loginHelpId" class="form-text text-muted">Insira seu login</small>
                     </div>
                     <div class="mb-3 col-12 ">
                         <label for="senha" class="form-label">Senha</label>
                         <input type="password" class="form-control" name="senha" id="senha" aria-describedby="senhaHelpId" placeholder="**************"required>
-                        <small id="senhaHelpId" class="form-text text-muted">Informe a mesma senha informada anteriormente</small>
+                        <small id="senhaHelpId" class="form-text text-muted">Informe a sua senha</small>
                     </div>
                     <div class="mb-3 col-5">
                         <div class="form-check">
@@ -26,11 +26,14 @@
                             </label>
                         </div>
                     </div>
-                    <div class="mb-3 col-7">
-                        <p class="text-end" >Ainda não é cadastrado? clique <a href="/StockControl/registro/">aqui</a>.</p>
+                    <div class="mb-3 col-7 d-flex justify-content-end">
+                       <a href="/StockControl/RedefinirSenha/">Esqueceu sua senha?</a>
                     </div>
                     <div class="w-100 d-flex justify-content-center" >
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary ps-5 pe-5 pt-2 pb-2">Login</button>
+                    </div>
+                    <div class="col mt-3 d-flex justify-content-center">
+                        <span class="">Ainda não é cadastrado? Cadastre-se <a href="/StockControl/registro/">Aqui</a>.</span>
                     </div>
                 </div>
             </form>

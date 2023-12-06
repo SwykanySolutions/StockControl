@@ -12,6 +12,7 @@
 <body>
     <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Navbar/index.php"); ?>
     <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Color/index.php"); ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Alert_Atualizar_Excluir/index.php"); ?>
     <div class="container mt-5" >
         <h2 class="text-center mb-5" >Boas vindas ao StockControler.</h2>
         <h3 class="text-center mb-5" >Abaixo temos algumas informações sobre o sistema</h3>
@@ -29,7 +30,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Id_produto</th>
                             <th scope="col">Código de barras</th>
                             <th scope="col">Nome produto</th>
                             <th scope="col">Categoria</th>
@@ -44,7 +44,6 @@
                     <tbody>
                         <?php foreach($result as $row) { ?>
                         <tr>
-                            <th scope="col"><?=$row["id_produto"]?></th>
                             <td scope="col"><?=$row["codigo_de_barras"]?></td>
                             <td scope="col"><?=$row["nome"]?></td>
                             <td scope="col"><?=$row["categoria"]?></td>

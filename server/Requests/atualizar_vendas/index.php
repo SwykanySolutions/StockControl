@@ -18,15 +18,15 @@ try {
     $stmt->bindParam(":data_da_venda", $data_da_venda, PDO::PARAM_STR);
     $stmt->bindParam(":quantidade", $quantidade, PDO::PARAM_INT);
     if(!$stmt->execute()){
-        header("Location:/StockControl/");
+        header("Location:/StockControl/?atualizar=1");
         exit();
     }
-    header("Location:/StockControl/");
+    header("Location:/StockControl/?atualizar=2");
     exit();
 
 } catch (\Throwable $th) {
     echo "erro ao atualizar a venda". $th->getMessage();
-    header("Location:/StockControl/");
+    header("Location:/StockControl/?atualizar=0");
     exit();
     //throw $th;
 }

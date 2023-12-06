@@ -24,15 +24,15 @@ try {
     $stmt->bindParam(":marca", $marca, PDO::PARAM_STR);
     $stmt->bindParam(":quantidade", $quantidade, PDO::PARAM_INT);
     if(!$stmt->execute()){
-        header("Location: /StockControl/Estoque/");
+        header("Location: /StockControl/Estoque/?atualizar=1");
         exit();
     }
-    header("Location: /StockControl/Estoque/");
+    header("Location: /StockControl/Estoque/?atualizar=2");
     exit();
 
 } catch (\Throwable $th) {
     echo "erro ao atualizar o produto". $th->getMessage();
-    header("Location: /StockControl/Estoque/");
+    header("Location: /StockControl/Estoque/?atualizar=0");
     exit();
     //throw $th;
 }

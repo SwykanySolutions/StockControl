@@ -5,6 +5,7 @@
 <body>
     <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Navbar/index.php"); ?>
     <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Color/index.php"); ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT']."/StockControl/components/Alert_Atualizar_Excluir/index.php"); ?>
     <div class="container mt-5" >
         <h2 class="text-center mb-5" >Boas vindas ao StockControler.</h2>
         <h3 class="text-center mb-5" >Abaixo temos algumas informações sobre o sistema</h3>
@@ -22,7 +23,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Id_cliente</th>
                             <th scope="col">Nome cliente</th>
                             <th scope="col">Sobrenome cliente</th>
                             <th scope="col">Data de nascimento</th>
@@ -35,10 +35,9 @@
                         <?php foreach($result as $row) { ?>
                         
                         <tr>
-                            <th scope="col"><?=$row["id_cliente"]?></th>
                             <td scope="col"><?=$row["nome"]?></td>
                             <td scope="col"><?=$row["sobrenome"]?></td>
-                            <td scope="col"><?=$row["data_de_nascimento"]?></td>
+                            <td scope="col"><?=(new DateTime($row["data_de_nascimento"]))->format("d/m/Y")?></td>
                             <td scope="col"><?=$row["cpf"]?></td>
                             <td scope="col">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAlterarClienteId<?=$row["id_cliente"]?>">

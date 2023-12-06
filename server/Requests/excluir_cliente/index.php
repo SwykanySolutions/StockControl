@@ -10,15 +10,15 @@ try {
     $stmt = $conexao->prepare($SQL);
     $stmt->bindParam(":id_cliente", $id_cliente, PDO::PARAM_INT);
     if(!$stmt->execute()){
-        header("Location: /StockControl/Cliente/");
+        header("Location: /StockControl/Cliente/?excluir=1");
         exit();
     }
-    header("Location: /StockControl/Cliente/");
+    header("Location: /StockControl/Cliente/?excluir=2");
     exit();
 
 } catch (\Throwable $th) {
     echo "erro ao excluir o cliente". $th->getMessage();
-    header("Location: /StockControl/Estoque/");
+    header("Location: /StockControl/Estoque/?excluir=0");
     exit();
     //throw $th;
 }

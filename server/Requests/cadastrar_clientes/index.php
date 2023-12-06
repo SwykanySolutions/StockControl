@@ -16,15 +16,15 @@ try {
     $stmt->bindParam(":data_de_nascimento", $data_de_nascimento, PDO::PARAM_STR);
     $stmt->bindParam(":cpf", $cpf, PDO::PARAM_STR);
     if(!$stmt->execute()){
-        header("Location:/StockControl/CadastrarCliente/");
+        header("Location:/StockControl/CadastrarCliente/?cadastro=1");
         exit();
     }
-    header("Location:/StockControl/CadastrarCliente/");
+    header("Location:/StockControl/CadastrarCliente/?cadastro=2");
     exit();
 
 } catch (\Throwable $th) {
     echo "erro ao cadastrar o cliente". $th->getMessage();
-    header("Location:/StockControl/CadastrarCliente/");
+    header("Location:/StockControl/CadastrarCliente/?cadastro=0");
     exit();
     //throw $th;
 }
